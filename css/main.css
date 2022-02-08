@@ -1,0 +1,351 @@
+@import url("https://fonts.googleapis.com/css2?family=Forum&family=Libre+Caslon+Text&family=Montserrat&family=Open+Sans&family=Oxygen&family=Raleway&display=swap");
+
+:root {
+  --blue: #c2dfe3;
+  --nude: #e6ccb2;
+  --green: #84998f;
+  --white: #f1f1f1;
+  --black: #0f0f0f;
+  --grey: #eaeaeae8;
+  --grey2: #eaeaea;
+  --purple: #6148c9;
+  --rose: #c2169d;
+  --orange: #e9303e;
+}
+
+*,
+::before,
+::after {
+  font-family: Raleway, "sans-serif" !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none !important;
+}
+body {
+  background: var(--green) !important;
+}
+.df {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+.dfc {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  flex-direction: column !important;
+}
+.dfsc {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: flex-start !important;
+  flex-direction: column !important;
+}
+@media screen and (max-width: 768px) {
+  .dfsc {
+    align-items: center !important;
+  }
+}
+.dfers {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+@media screen and (max-width: 772px) {
+  .dfers {
+    justify-content: center;
+  }
+}
+
+.title {
+  letter-spacing: 5px !important;
+  font-family: Libre Caslon, "sans-serif" !important;
+}
+
+/* *************************** */
+/* *************************** */
+/* TOGGLE */
+
+#toggle {
+  z-index: 102;
+  position: fixed;
+  top: 2%;
+  left: 1.5%;
+  width: clamp(40px, 60px, 70px);
+  height: 60px;
+  transition: 0.5s;
+  background: var(--white);
+  cursor: pointer;
+  background: transparent;
+}
+
+#toggle:before {
+  content: "";
+  position: absolute;
+  top: 44%;
+  left: 50%;
+  height: 1px;
+  width: 40%;
+  background: var(--black);
+  transform: translate(-50%, -50%);
+  transition: 0.5s;
+}
+
+#toggle.active:before {
+  transition: 0.4s;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  background: var(--black);
+}
+
+#toggle:after {
+  content: "";
+  position: absolute;
+  top: 58%;
+  left: 50%;
+  height: 1px;
+  width: 40%;
+  background: var(--black);
+  transform: translate(-50%, -50%);
+  transition: 0.5s;
+}
+
+#toggle.active:after {
+  transition: 0.5s;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(135deg);
+  background: var(--black);
+}
+
+/* *************************** */
+/* *************************** */
+/* HEADER + LOGO + NAVIGATION */
+
+.logo-temp {
+  position: absolute;
+  bottom: 0;
+  left: 45px;
+  transition: 0.35s;
+}
+.logo-temp > img {
+  width: 150px;
+  height: 150px;
+}
+
+header.header {
+  /* background: var(--white); */
+  background: #eaeaeaf6;
+  width: 100% !important;
+  height: 108px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 101;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: headerDisapear 0.35s linear forwards;
+}
+@keyframes headerAppear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes headerDisapear {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+header.header > .logo-container {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header.header > .logo-container > .logo {
+  /* background: url(/media/logo/) center/cover; */
+  width: 20vmin;
+  height: 90%;
+  width: 120px;
+  height: 105px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 4px #0f0f0fff;
+}
+
+.navigation {
+  background: linear-gradient(130deg, var(--green), var(--grey2));
+  /* background: var(--green); */
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 22%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem 3.5rem 1rem !important;
+  transform: translateX(-5%);
+  opacity: 0;
+  transition: 0.55s;
+  z-index: 101;
+}
+
+/* NAVIGATION FULL SCREEN AT 772PX */
+@media screen and (max-width: 772px) {
+  .navigation {
+    width: 100% !important;
+  }
+  .navigation > ul > li > .navigation-item {
+    font-size: 5vmin !important;
+  }
+}
+
+.navigation.active {
+  /* transform: translateY(0); */
+  transform: translateX(0);
+  opacity: 1;
+  transition: 0.55s;
+}
+
+.navigation.active > ul > li > a.navigation-item {
+  opacity: 1 !important;
+}
+
+.navigation > ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.navigation > ul > li {
+  margin: 1rem 0 !important;
+}
+
+.navigation > ul > li > .navigation-item {
+  padding: 5px 12px !important;
+  opacity: 0 !important;
+  color: var(--black);
+  font-size: 3.5vmin;
+  transition: 0.35s;
+}
+
+.navigation > ul > li:hover > a.navigation-item {
+  color: var(--green);
+}
+
+/* *************************** */
+/* *************************** */
+/* *************************** */
+
+.accueil,
+.prestations,
+.a-propos {
+  position: relative;
+  min-height: 100vh;
+}
+
+/* *************************** */
+/* *************************** */
+/* ACCUEIL */
+
+.accueil {
+  padding-top: 108px !important;
+}
+
+.accueil > .row:nth-child(1) {
+  height: 65vh;
+  background: url(/media/img/laptop3.jpg) center/cover fixed;
+  width: 95%;
+}
+/* BACKGROUND IMAGE FULLSCREEN AT 772PX */
+@media screen and (max-width: 772px) {
+  .accueil > .row:nth-child(1) {
+    width: 100%;
+  }
+}
+
+/* *************************** */
+/* *************************** */
+/* PRESTATIONS */
+
+.prestations {
+  background: var(--grey);
+}
+
+.prestations::before {
+  content: "KSL";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  color: var(--black);
+  font-size: 50vmin;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  z-index: -1;
+}
+
+@media screen and (max-width: 772px) {
+  .prestations::before {
+    content: "" !important;
+  }
+}
+/* *************************** */
+/* *************************** */
+/* A PROPOS */
+
+#a-propos {
+  background: var(--green);
+  background: linear-gradient(90deg, var(--green) 82%, var(--grey) 18%);
+  transition: 0.44s;
+  padding-top: 110px!important;
+}
+
+.profilpic {
+  width: 35vmin !important;
+}
+.dfers > a {
+  color: var(--black);
+}
+.dfers > a:hover {
+  opacity: 0.8;
+  color: var(--black);
+}
+
+.obs {
+  opacity: 0;
+  transition: ease-in 0.45s;
+}
+.obs-left {
+  opacity: 0;
+  transition: ease-in 0.45s;
+  transform: translate(-20px, 0);
+}
+.obs-right {
+  opacity: 0;
+  transition: ease-in 0.45s;
+  transform: translate(20px, 0);
+}
+@media screen and (max-width: 768px) {
+  .obs-left, .obs-right {
+    transform: translate(0,0);
+  }
+}
